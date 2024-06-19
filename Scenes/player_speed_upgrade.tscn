@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b066im7qgliau"]
+
+[ext_resource type="Script" path="res://PlayerSpeedUpgrade.gd" id="1_mo0ku"]
+[ext_resource type="Texture2D" uid="uid://dsymsgv5all2y" path="res://Art/Items/ScrollPlant.png" id="1_sskd0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5q8l"]
+size = Vector2(18.7689, 18.8312)
+
+[node name="PlayerSpeedUpgrade" type="Area2D"]
+script = ExtResource("1_mo0ku")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k5q8l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_sskd0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

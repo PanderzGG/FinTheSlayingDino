@@ -45,8 +45,6 @@ func _physics_process(delta):
 	%HealthBar.max_value = max_health
 	%HealthBar.value = lerp(health, max_health, delta)
 	
-	print(round(%RegenTimer.time_left))
-	
 	
 	# Simple first Animation Setup nothing fancy
 	if velocity.length() > 0.0:
