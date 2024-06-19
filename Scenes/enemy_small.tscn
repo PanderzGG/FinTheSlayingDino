@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://bxdvpdifno7jp"]
+
+[ext_resource type="Script" path="res://Scripts/EnemySmall.gd" id="1_pcm7r"]
+[ext_resource type="Texture2D" uid="uid://drtrnr0200rvq" path="res://Art/Enemy/Smal/SpriteSheet.png" id="2_gvlst"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgjd7"]
+atlas = ExtResource("2_gvlst")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dinu3"]
+atlas = ExtResource("2_gvlst")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyxyp"]
+atlas = ExtResource("2_gvlst")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykdx6"]
+atlas = ExtResource("2_gvlst")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xj2c"]
+atlas = ExtResource("2_gvlst")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2g60"]
+atlas = ExtResource("2_gvlst")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cny7j"]
+atlas = ExtResource("2_gvlst")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhv4n"]
+atlas = ExtResource("2_gvlst")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xogji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgjd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dinu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyxyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykdx6")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xj2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2g60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cny7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhv4n")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dmt0w"]
+radius = 6.0
+
+[node name="EnemySmall" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 3
+platform_floor_layers = 0
+script = ExtResource("1_pcm7r")
+
+[node name="EnemyAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xogji")
+animation = &"walk_left"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_dmt0w")
