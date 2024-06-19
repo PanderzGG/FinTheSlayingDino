@@ -1,7 +1,8 @@
 extends Node2D
 
-
 # Mob Spawner
+func _on_small_enemy_timer_timeout():
+	spawn_mob()
 
 func spawn_mob():
 	
@@ -11,9 +12,3 @@ func spawn_mob():
 	%PathFollow2D.progress_ratio = randf()
 	newMob.global_position = %PathFollow2D.global_position
 	add_child(newMob)
-
-
-
-
-func _on_small_enemy_timer_timeout():
-	spawn_mob()

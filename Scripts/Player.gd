@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var anim = $Player_SpriteAnimation
 
+@onready var label = Label
+@onready var time = Timer
 
 # speed is going to reference a Global var in the future to make sure we can modulate it. Or through a different node ain't sure yet
 var speed: int = 150
@@ -13,8 +15,17 @@ var regen_rate: int = Global.player_health_regen_rate
 
 
 
-
+func _ready():
+	label = %TimerLabel
+	time = %GameTimer
+	
+	time.start()
 # Physicsprocess is part of the Main Game Loop. Use delta for time dependend actions like movement.
+
+func _process(delta):
+	update_label_text()
+
+
 func _physics_process(delta):
 	
 	var currenthealth: float
@@ -74,3 +85,6 @@ func _on_regen_timer_timeout(delta):
 			health += regen_rate * delta
 			
 		
+
+func update_label_text():
+	label.text = str(ceil(time.time_left))

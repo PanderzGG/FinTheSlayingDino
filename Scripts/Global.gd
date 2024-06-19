@@ -8,5 +8,5 @@ extends Node
 # # # # # # # # # # # # # # # # # # # #  Player Variables # # # # # # # # # # # # # # # # # # # # # # # # #
 
 var player_health_regen_rate: int = 1
-
+var bigpp: int = 20
 # # # # # # # # # # # # # # # # # # # # # Enemy Variable # # # # # # # # # # # # # # # # # # # # # # # # # 
