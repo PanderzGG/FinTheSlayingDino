@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://db0mo8hu8ojl5"]
+[gd_scene load_steps=28 format=3 uid="uid://db0mo8hu8ojl5"]
 
 [ext_resource type="Texture2D" uid="uid://cvd0vjgqtqs35" path="res://Art/Player/Character/SpriteSheet.png" id="1_n5mfm"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_p8w3x"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d21xaiumucm6e" path="res://Art/Player/Character/health_bar.png" id="6_35cdx"]
 [ext_resource type="Script" path="res://Scripts/RegenTimer.gd" id="6_b8dfp"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="7_42u38"]
+[ext_resource type="Script" path="res://Scripts/GunRange.gd" id="7_nrogl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_55l77"]
 atlas = ExtResource("1_n5mfm")
@@ -167,11 +168,11 @@ platform_floor_layers = 0
 script = ExtResource("1_p8w3x")
 
 [node name="Player_SpriteAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_0dv4j")
 animation = &"walk_left"
 
 [node name="Player_Collisionshape" type="CollisionShape2D" parent="."]
-position = Vector2(-0.350632, 2.20407)
 shape = SubResource("CircleShape2D_ena24")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -214,12 +215,17 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-0.408791, 1.93246)
 shape = SubResource("CircleShape2D_tvccl")
 debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="RegenTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 script = ExtResource("6_b8dfp")
+
+[node name="GunRange" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("7_nrogl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunRange"]
 
 [connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
