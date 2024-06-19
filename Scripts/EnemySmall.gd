@@ -3,13 +3,15 @@ extends CharacterBody2D
 static var smallpp: int = 5
 
 # This is for the actual game
-@onready var player = get_node("/root/Main/Game/Player")
+#@onready var player = get_node("/root/Main/Game/Player")
 
 # Use this for developing on the Level 1 scene
-#@onready var player = get_node("/root/Game/Player")
+@onready var player = get_node("/root/Game/Player")
 
 var speed: int = 120
 
+func _ready():
+	add_to_group("enemies")
 
 func _physics_process(delta):
 	
